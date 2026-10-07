@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fantázia Vidámpark - Éld át a varázslatot!</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0b091a;
+            color: #f8f9fa;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .navbar-brand, .park-font {
+            font-family: 'Fredoka', cursive;
+        }
+
+        .hero-section {
+            background: linear-gradient(rgba(11, 9, 26, 0.7), rgba(11, 9, 26, 0.85)), url('https://wallpapers.com/images/featured/theme-park-pictures-mz1zfyf4vdb2w3kn.jpg') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .neon-blink {
+            animation: neonPulse 1.5s infinite alternate;
+        }
+
+        @keyframes neonPulse {
+            0% {
+                opacity: 1;
+                text-shadow: 0 0 10px #ff007f, 0 0 20px #ff007f, 0 0 30px #ff007f, 0 0 40px #ff3399;
+            }
+            100% {
+                opacity: 0.6;
+                text-shadow: 0 0 5px #ff007f, 0 0 10px #ff007f;
+            }
+        }
+
+        .neon-box {
+            border: 2px solid #ff007f;
+            box-shadow: 0 0 15px #ff007f, inset 0 0 15px #ff007f;
+            background: rgba(255, 0, 127, 0.1);
+        }
+
+        .navbar {
+            background: rgba(11, 9, 26, 0.9) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid #7928ca;
+        }
+
+        .attraction-card {
+            background: rgba(26, 20, 50, 0.85);
+            border: 1px solid #4a154b;
+            border-radius: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+
+        .attraction-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(255, 0, 127, 0.4);
+            border-color: #ff007f;
+        }
+
+        .attraction-card img {
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .attraction-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .carousel-item img {
+            height: 500px;
+            object-fit: cover;
+            border-radius: 1rem;
+        }
+
+        .carousel-caption {
+            background: rgba(11, 9, 26, 0.6);
+            backdrop-filter: blur(5px);
+            border-radius: 1rem;
+            padding: 1.5rem;
+        }
+
+        .ticket-section {
+            background: linear-gradient(135deg, #1a0b2e 0%, #2b093f 100%);
+            border-radius: 1.5rem;
+            border: 2px solid #7928ca;
+            box-shadow: 0 0 25px rgba(121, 40, 202, 0.5);
+        }
+
+        .map-container {
+            border-radius: 1rem;
+            overflow: hidden;
+            border: 2px solid #ff007f;
+            box-shadow: 0 0 20px rgba(255, 0, 127, 0.3);
+        }
+
+        footer {
+            background: #070512;
+            border-top: 1px solid #2b093f;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand text-warning fs-3" href="#">
+                <i class="fa-solid fa-ferris-wheel fa-spin fa-spin-reverse" style="--fa-animation-duration: 8s;"></i> Fantázia Park
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-lg-center gap-3">
+                    <li class="nav-item"><a class="nav-link active" href="#home">Kezdőlap</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#attractions">Játékok</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tickets">Jegyvásárlás</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Kapcsolat</a></li>
+                    <li class="nav-item">
+                        <a href="#tickets" class="btn btn-danger btn-sm px-4 rounded-pill fw-bold shadow-sm" style="background: #ff007f; border: none;">Jegyet veszek</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero-section pt-5 mt-5">
+        <div class="container text-center py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="p-3 mb-4 rounded-pill neon-box d-inline-block px-4">
+                        <span class="text-warning fw-bold fs-5 neon-blink">
+                            <i class="fa-solid fa-bolt me-2"></i> Csak ma: 50% kedvezmény a VIP jegyekre! <i class="fa-solid fa-bolt ms-2"></i>
+                        </span>
+                    </div>
+                    <h1 class="display-3 fw-bold text-white mb-3">Lépj be a csodák vidámparkjába!</h1>
+                    <p class="lead text-light mb-5 fs-4">Izgalmas hullámvasutak, lenyűgöző fények, felejthetetlen családi élmények várnak rád minden nap!</p>
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="#tickets" class="btn btn-lg text-white px-5 rounded-pill fw-bold shadow-lg" style="background: linear-gradient(45deg, #ff007f, #7928ca);">Jegyvásárlás</a>
+                        <a href="#attractions" class="btn btn-outline-light btn-lg px-5 rounded-pill fw-bold">Játékok felfedezése</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-dark">
+        <div class="container">
+            <h2 class="text-center text-white mb-4 display-5 fw-bold">Látványos Attrakcióink</h2>
+            <div id="parkCarousel" class="carousel slide shadow-lg" data-bs-ride="carousel" data-bs-interval="4000">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#parkCarousel" data-bs-slide-to="0" class="active"></button>
+                    <button type="button" data-bs-target="#parkCarousel" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#parkCarousel" data-bs-slide-to="2"></button>
+                </div>
+                <div class="carousel-inner rounded-4">
+                    <div class="carousel-item active">
+                        <img src="https://placehold.co/1200x500/2a104f/ff007f?text=Mennydorges+Hullamvasut" class="d-block w-100" alt="Hullámvasút" onerror="this.src='https://placehold.co/1200x500/111/fff?text=Hullamvasut'">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h3>Mennydörgés Hullámvasút</h3>
+                            <p>Ahol az adrenalin a maximumra tör! Európa egyik leggyorsabb acél vasútja.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://placehold.co/1200x500/102f4f/00f2fe?text=csillagfenyes+oriasfok" class="d-block w-100" alt="Óriáskerék" onerror="this.src='https://placehold.co/1200x500/111/fff?text=Oriasfok'">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h3>Csillagfény Óriáskerék</h3>
+                            <p>Gyönyörködj a város esti panorámájában 60 méteres magasságból!</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://placehold.co/1200x500/4f1035/ffaa00?text=Vizi+Dzsungel+Csuszda" class="d-block w-100" alt="Vízi csúszda" onerror="this.src='https://placehold.co/1200x500/111/fff?text=Vizi+Csuszda'">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h3>Vízi Dzsungel Csúszda</h3>
+                            <p>Hűsítsd le magad a legvadabb vízi kalandokban és csobbanj nagyot!</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#parkCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#parkCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="attractions" class="py-5" style="background-color: #0b091a;">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <span class="text-uppercase text-warning fw-bold tracking-wider">Felejthetetlen élmények</span>
+                <h2 class="display-5 fw-bold text-white mt-1">Főbb Játékaink & Szolgáltatásaink</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card attraction-card h-100 text-white">
+                        <img src="https://placehold.co/600x400/3d1052/fff?text=Hullamvasut" class="card-img-top" alt="Hullámvasút" onerror="this.src='https://placehold.co/600x400/222/fff?text=Kep'">
+                        <div class="card-body d-flex flex-column p-4">
+                            <h4 class="card-title fw-bold text-warning">Mennydörgés Hullámvasút</h4>
+                            <p class="card-text text-light opacity-75">Több mint 120 km/h sebesség, szabadesés élmény és félelmetes hurkok a bátor túrázóknak.</p>
+                            <div class="mt-auto pt-3 d-flex justify-content-between align-items-center">
+                                <span class="badge bg-danger px-3 py-2 rounded-pill">Adrenalin</span>
+                                <span class="fw-bold text-info"><i class="fa-solid fa-ruler-vertical me-1"></i> Min. 140 cm</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card attraction-card h-100 text-white">
+                        <img src="https://placehold.co/600x400/103a52/fff?text=Oriasfok" class="card-img-top" alt="Óriáskerék" onerror="this.src='https://placehold.co/600x400/222/fff?text=Kep'">
+                        <div class="card-body d-flex flex-column p-4">
+                            <h4 class="card-title fw-bold text-warning">Csillagfény Óriáskerék</h4>
+                            <p class="card-text text-light opacity-75">Romantikus pillanatok és csodás kilátás kényelmes, zárt kabinokból kicsiknek és nagyoknak.</p>
+                            <div class="mt-auto pt-3 d-flex justify-content-between align-items-center">
+                                <span class="badge bg-success px-3 py-2 rounded-pill">Családi</span>
+                                <span class="fw-bold text-info"><i class="fa-solid fa-heart me-1"></i> Minden korosztály</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card attraction-card h-100 text-white">
+                        <img src="https://placehold.co/600x400/52102a/fff?text=Vizi+Csuszda" class="card-img-top" alt="Vízi csúszda" onerror="this.src='https://placehold.co/600x400/222/fff?text=Kep'">
+                        <div class="card-body d-flex flex-column p-4">
+                            <h4 class="card-title fw-bold text-warning">Vízi Dzsungel Csúszda</h4>
+                            <p class="card-text text-light opacity-75">Többsávos óriáscsúszdák fánkos gumicsónakos futamokkal, vidám hangulatban és óriási csobbanással.</p>
+                            <div class="mt-auto pt-3 d-flex justify-content-between align-items-center">
+                                <span class="badge bg-primary px-3 py-2 rounded-pill">Vízi élmény</span>
+                                <span class="fw-bold text-info"><i class="fa-solid fa-ruler-vertical me-1"></i> Min. 120 cm</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card attraction-card h-100 text-white">
+                        <img src="https://placehold.co/600x400/4d3810/fff?text=Kalandor+Kastely" class="card-img-top" alt="Kalandor Kastély" onerror="this.src='https://placehold.co/600x400/222/fff?text=Kep'">
+                        <div class="card-body d-flex flex-column p-4">
+                            <h4 class="card-title fw-bold text-warning">Kísértetkastély</h4>
+                            <p class="card-text text-light opacity-75">Merj belépni a sötét szobákba! Interaktív lények, ijesztő hangok és izgalmas rejtélyek várnak.</p>
+                            <div class="mt-auto pt-3 d-flex justify-content-between align-items-center">
+                                <span class="badge bg-warning text-dark px-3 py-2 rounded-pill">Ijesztő</span>
+                                <span class="fw-bold text-info"><i class="fa-solid fa-ghost me-1"></i> Min. 10 év</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card attraction-card h-100 text-white">
+                        <img src="https://placehold.co/600x400/105234/fff?text=Körhinta" class="card-img-top" alt="Körhinta" onerror="this.src='https://placehold.co/600x400/222/fff?text=Kep'">
+                        <div class="card-body d-flex flex-column p-4">
+                            <h4 class="card-title fw-bold text-warning">Nosztalgia Körhinta</h4>
+                            <p class="card-text text-light opacity-75">Kézzel festett falovak és hintók, varázslatos zene a legkisebb vidámparkos hercegnőknek és hercegeknek.</p>
+                            <div class="mt-auto pt-3 d-flex justify-content-between align-items-center">
+                                <span class="badge bg-success px-3 py-2 rounded-pill">Gyerekbarát</span>
+                                <span class="fw-bold text-info"><i class="fa-solid fa-child me-1"></i> Szülői felügyelettel</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card attraction-card h-100 text-white">
+                        <img src="https://placehold.co/600x400/52104e/fff?text=VIP+Lounge" class="card-img-top" alt="VIP Lounge" onerror="this.src='https://placehold.co/600x400/222/fff?text=Kep'">
+                        <div class="card-body d-flex flex-column p-4">
+                            <h4 class="card-title fw-bold text-warning">VIP Cukrászda & Lounge</h4>
+                            <p class="card-text text-light opacity-75">Pihenj meg a megfáradt sorbanállás után prémium hűsítőitalok, kézműves fagyik és finomságok társaságában.</p>
+                            <div class="mt-auto pt-3 d-flex justify-content-between align-items-center">
+                                <span class="badge bg-danger px-3 py-2 rounded-pill">VIP Szolgáltatás</span>
+                                <span class="fw-bold text-info"><i class="fa-solid fa-star me-1"></i> Élmény</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tickets" class="py-5 bg-dark">
+        <div class="container py-4">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="ticket-section p-4 p-md-5 text-white">
+                        <div class="text-center mb-4">
+                            <h2 class="fw-bold text-warning">Online Jegyvásárlás</h2>
+                            <p class="text-light">Töltsd ki az űrlapot a jegyek megrendeléséhez, és azonnal igazoljuk a vásárlásodat!</p>
+                        </div>
+                        <form id="ticketForm">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="fullName" class="form-label fw-semibold">Teljes Név</label>
+                                    <input type="text" class="form-control bg-dark text-white border-secondary" id="fullName" required placeholder="Pl. Kovács Anna">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="email" class="form-label fw-semibold">E-mail Cím</label>
+                                    <input type="email" class="form-control bg-dark text-white border-secondary" id="email" required placeholder="anna@example.com">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="ticketType" class="form-label fw-semibold">Jegy Típusa</label>
+                                    <select class="form-select bg-dark text-white border-secondary" id="ticketType" required>
+                                        <option value="" selected disabled>Válassz jegytípust...</option>
+                                        <option value="Felnőtt (6.500 Ft)">Felnőtt Napijegy - 6.500 Ft</option>
+                                        <option value="Gyermek / Nyugdíjas (4.500 Ft)">Gyermek / Nyugdíjas Napijegy - 4.500 Ft</option>
+                                        <option value="VIP Családi (18.000 Ft)">VIP Családi Jegy (2felnőtt + 2gyerek) - 18.000 Ft</option>
+                                        <option value="Csak ma VIP (Kedvezményes)">Csak ma: VIP Kedvezményes Jegy - 9.000 Ft</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="ticketCount" class="form-label fw-semibold">Darabszám</label>
+                                    <input type="number" class="form-control bg-dark text-white border-secondary" id="ticketCount" min="1" max="10" value="1" required>
+                                </div>
+                                <div class="col-12">
+                                    <label for="visitDate" class="form-label fw-semibold">Látogatás Napja</label>
+                                    <input type="date" class="form-control bg-dark text-white border-secondary" id="visitDate" required>
+                                </div>
+                                <div class="col-12 form-check ms-3 mt-3">
+                                    <input class="form-check-input" type="checkbox" id="termsCheck" required>
+                                    <label class="form-check-label text-light" for="termsCheck">
+                                        Elfogadom a házirendet és a felhasználási feltételeket.
+                                    </label>
+                                </div>
+                                <div class="col-12 text-center mt-4">
+                                    <button type="submit" class="btn btn-lg text-white px-5 rounded-pill fw-bold shadow-lg" style="background: linear-gradient(45deg, #ff007f, #7928ca);">
+                                        <i class="fa-solid fa-ticket me-2"></i> Jegyek Megrendelése (JSON)
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-5" style="background-color: #0b091a;">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <span class="text-uppercase text-warning fw-bold tracking-wider">Merre találsz meg minket?</span>
+                <h2 class="display-5 fw-bold text-white mt-1">Kapcsolat & Helyszín</h2>
+            </div>
+            <div class="row g-4 align-items-center">
+                <div class="col-lg-5 text-white">
+                    <div class="p-4 rounded-4" style="background: rgba(26, 20, 50, 0.85); border: 1px solid #4a154b;">
+                        <h4 class="text-warning fw-bold mb-3"><i class="fa-solid fa-location-dot me-2"></i> Fantázia Vidámpark</h4>
+                        <p class="text-light mb-4">Látogass el hozzánk családoddal vagy barátaiddal, és töltsetek el egy felejthetetlen napot velünk!</p>
+                        
+                        <div class="d-flex align-items-start mb-3">
+                            <i class="fa-solid fa-map-pin text-danger fs-4 me-3 mt-1"></i>
+                            <div>
+                                <h6 class="fw-bold mb-0">Cím</h6>
+                                <p class="text-light opacity-75 mb-0">Vidámpark sétány 1., 2400 Dunaújváros</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-start mb-3">
+                            <i class="fa-solid fa-phone text-success fs-4 me-3 mt-1"></i>
+                            <div>
+                                <h6 class="fw-bold mb-0">Telefonszám</h6>
+                                <p class="text-light opacity-75 mb-0">+36 (25) 555-1234</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-start">
+                            <i class="fa-solid fa-envelope text-warning fs-4 me-3 mt-1"></i>
+                            <div>
+                                <h6 class="fw-bold mb-0">E-mail Cím</h6>
+                                <p class="text-light opacity-75 mb-0">info@fantaziavidampark.hu</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="map-container shadow-lg">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d43981.87944503732!2d18.90566!3d46.96417!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47427d14d1872dfd%3A0x400c4290c1e13b0!2zRHVuYcOqdmrDoXJvcw!5e0!3m2!1shu!2shu!4v1700000000000!5m2!1shu!2shu" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center py-4 text-white">
+        <div class="container">
+            <p class="mb-1 fw-bold">&copy; 2026 Fantázia Vidámpark. Minden jog fenntartva.</p>
+            <p class="text-muted small mb-0">Készült a legfejlettebb Bootstrap technológiával az igazi vidámpark hangulatért.</p>
+        </div>
+    </footer>
+
+    <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark text-white border border-success shadow-lg rounded-4">
+                <div class="modal-body text-center p-5">
+                    <div class="mb-3">
+                        <i class="fa-solid fa-circle-check text-success fa-4x animate__animated animate__bounceIn"></i>
+                    </div>
+                    <h3 class="fw-bold text-warning mb-3">Sikeres Jegyvásárlás!</h3>
+                    <p class="text-light mb-4">Köszönjük megrendelésed! A jegyek adatait alább JSON formátumban feldolgoztuk és elküldtük az e-mail címedre:</p>
+                    <div class="bg-black p-3 rounded text-start mb-4 border border-secondary" style="max-height: 200px; overflow-y: auto;">
+                        <pre id="jsonOutput" class="text-info small mb-0 font-monospace"></pre>
+                    </div>
+                    <button type="button" class="btn btn-success px-4 rounded-pill fw-bold" data-bs-dismiss="modal">Bezárás / Új jegy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            document.getElementById('visitDate').valueAsDate = tomorrow;
+
+            const ticketForm = document.getElementById('ticketForm');
+            ticketForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const orderData = {
+                    id: "PARK-" + Math.floor(100000 + Math.random() * 900000),
+                    fullName: document.getElementById('fullName').value,
+                    email: document.getElementById('email').value,
+                    ticketType: document.getElementById('ticketType').value,
+                    ticketCount: parseInt(document.getElementById('ticketCount').value),
+                    visitDate: document.getElementById('visitDate').value,
+                    timestamp: new Date().toISOString()
+                };
+
+                const jsonString = JSON.stringify(orderData, null, 2);
+                document.getElementById('jsonOutput').textContent = jsonString;
+
+                const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+                successModal.show();
+
+                ticketForm.reset();
+                document.getElementById('visitDate').valueAsDate = tomorrow;
+            });
+        });
+    </script>
+</body>
+</html>
